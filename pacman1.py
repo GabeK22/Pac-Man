@@ -1,7 +1,6 @@
 from random import choice
 from turtle import *
 from freegames import floor, vector
-import math
 
 state = {'score': 0}
 path = Turtle(visible=False)
