@@ -1668,5 +1668,6 @@ elif gamemode=='2':
     else:
         print('Not valid map')
 
+#If invalid gamemode is input, prints following string
 else:
     print('Not valid input for gamemode')
