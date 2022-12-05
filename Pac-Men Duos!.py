@@ -132,7 +132,7 @@ if gamemode=='1':
             writer.write(state['score'],font =('Courier',20,'bold'))
     
             clear()
-            #tests if direction pacman is aimed is valid
+            #tests if direction arrow pacman is aimed is valid
             if valid(pacman + aim):
                 pacman.move(aim)
     
@@ -145,24 +145,27 @@ if gamemode=='1':
                 x = (index % 20) * 20 - 200
                 y = 180 - (index // 20) * 20
                 square(x, y)
-    
+           
+            #moves arrow pacman / defines shape, colour, and size
             up()
             goto(pacman.x + 10, pacman.y + 10)
             dot(25, paccolour)
             
-            
+            #tests if direction w,a,s,d pacman is aimed is valid
             if valid(pacman1 + aim1):
                 pacman1.move(aim1)
     
             index = offset(pacman1)
     
-            if tiles[index] == 1:
+            #defines when tiles=1, adds to score and redifines them so the pellet is gone
+            if tiles[index] == 1: 
                 tiles[index] = 2
                 state['score'] += 1
                 x = (index % 20) * 20 - 200
                 y = 180 - (index // 20) * 20
                 square(x, y)
     
+            #moves w,a,s,d pacman / defines shape, colour, and size
             up()
             goto(pacman1.x + 10, pacman1.y + 10)
             dot(25, paccolour1)
