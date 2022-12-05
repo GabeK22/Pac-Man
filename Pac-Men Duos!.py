@@ -170,9 +170,12 @@ if gamemode=='1':
             goto(pacman1.x + 10, pacman1.y + 10)
             dot(25, paccolour1)
             
+            #tests if direction ghost is headed is valid
+            #if valid the ghost chooses a vector and follows it
             for point, course in ghost1, ghost2, ghost3, ghost4:
                 if valid(point + course):
                     point.move(course)
+            #if not valid the ghosts will choose from options and begin a new course
                 else:
                     options = [
                         vector(10, 0),
@@ -183,13 +186,13 @@ if gamemode=='1':
                     plan = choice(options)
                     course.x = plan.x
                     course.y = plan.y
-    
+            #executes the course and moves ghost/defines size and colour
                 up()
                 goto(point.x + 10, point.y + 10)
                 dot(20, 'red')
     
             update()
-    
+            #if distance between pacman and ghost gets too small: game ends and prints the following
             for point, course in ghost1, ghost2, ghost3, ghost4:
                 if abs(pacman - point) < 20 or abs(pacman1 - point) < 20:
                     print()
@@ -198,34 +201,36 @@ if gamemode=='1':
                     print()
                     print ('Your Score:'+points.strip('{\'score\':}'))
                     exit()
+            #if all points are collected: prints the following
             if str(state).strip('{\'score\':}')=='160':
                 print()
                 print('Congratulations! You Won!')
                 points=str(state)
                 print ('Your Score:'+points.strip('{\'score\':}'))
                 exit()
-    
+            #pauses then starts and allows movement
             ontimer(move, 100)
     
-    
+        #Change arrow pacman aim if valid
         def change(x, y):
-            """Change pacman aim if valid."""
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
-        def change1(x1, y1):
-            """Change pacman aim if valid."""
+        #Change w,a,s,d pacman aim if valid
+        def change1(x1, y1):            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
-    
+        #Defines position of the map   
         setup(420, 420, 370, 0)
         hideturtle()
         tracer(False)
+        #Defines the colour and position of score counter
         writer.color('midnightblue')
         writer.goto(160, 160)
         writer.color('salmon')
         writer.write(state['score'])
+        #Listens for key clicks and takes as input to move pacman
         listen()
         onkey(lambda: change(5, 0), 'Right')
         onkey(lambda: change(-5, 0), 'Left')
@@ -238,7 +243,9 @@ if gamemode=='1':
         world()
         move()
         done()
-        
+    
+    #Case where space map is chosen
+    #Same conditions as previous map
     elif choosemap=='space':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -444,6 +451,8 @@ if gamemode=='1':
         move()
         done()
     
+    #Case where bullseye map is chosen
+    #Same conditions as previous map
     elif choosemap=='bullseye':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -647,7 +656,9 @@ if gamemode=='1':
         world()
         move()
         done()
-        
+    
+    #Case where western map is chosen
+    #Same conditions as previous map    
     elif choosemap=='western':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -850,10 +861,13 @@ if gamemode=='1':
         world()
         move()
         done()
-        
+    
+    #If invalid map is input, prints following statement  
     else:
         print('Not valid map')
 
+#Case where gamemode 2 is chosen
+#Same conditions as previous gamemode
 elif gamemode=='2':
     if choosemap=='classic':
         state = {'score': 0}
