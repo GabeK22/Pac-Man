@@ -1,3 +1,4 @@
+#Gabe King: GK, Owen Wilson: OW, Teo Stoilevski: TS
 from random import choice
 from turtle import *
 from freegames import floor, vector
