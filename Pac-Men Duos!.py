@@ -1,13 +1,16 @@
-#Gabe King: GK, Owen Wilson: OW, Teo Stoilevski: TS
+#import necessary libraries
 from random import choice
 from turtle import *
 from freegames import floor, vector
+#take input for gamemode, map and pacman's colour
 gamemode=str(input("Enter 1 for co-op or 2 for evil Pacman/versus:"))
 choosemap=str(input("Enter map choice (classic, space, bullseye, western):"))
 choosecolour=str(input("Enter a colour for Pacman (yellow, blue, orange, purple):"))
 paccolour=choosecolour.strip(' ')
+#tests for valid colour input
 if paccolour != 'yellow' and paccolour != 'blue' and paccolour != 'orange' and paccolour != 'purple':
     print ('Not a valid colour')
+#list of colours and their turtle id's
 yellow='gold1'
 blue='steelblue2'
 orange='darkorange2'
@@ -17,25 +20,35 @@ green='seagreen1'
 violet='slateblue2'
 brown='tomato4'
 
+#case where gamemode is co-op
 if gamemode=='1':
+    #input for the second pacmans colours
     choosecolour1=str(input("Enter a colour for second Pacman (pink,green,violet,brown):"))
     paccolour1=choosecolour1.strip(' ')
+    #tests if colour is valid
     if paccolour1 != 'pink' and paccolour1 != 'green' and paccolour1 != 'violet' and paccolour1 != 'brown':
         print ('Not a valid colour')
+    #case where classic map is chosen
     if choosemap=='classic':
+        #score
         state = {'score': 0}
+        #writer for the path pacman/the ghosts can go on 
         path = Turtle(visible=False)
+        #writer for the score
         writer = Turtle(visible=False)
+        #arrow key pacmans aim vector
         aim = vector(0, 0)
+        #w,a,s,d pacmans aim vector
         aim1= vector(0, 0)
+        #spawn location vectors and initial speed vectors for ghosts only
         pacman = vector(-40, -80)
         pacman1 = vector(-40, -80)
         ghost1 = vector(-180, 160), vector(10, 0)
         ghost2 = vector(-180, -160), vector(0, 10)
         ghost3 = vector(100, 160), vector(0, -10)
         ghost4 = vector(100, -160), vector(-10, 0)
-    
-        # fmt: off
+        
+        #defining the map: 1 is avalid path, 0 is an invalid path
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -58,11 +71,9 @@ if gamemode=='1':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
     
-    
+        #draw square using a path at point (x,y)
         def square(x, y):
-            """Draw square using path at (x, y)."""
             path.up()
             path.goto(x, y)
             path.down()
@@ -74,17 +85,15 @@ if gamemode=='1':
     
             path.end_fill()
     
-    
+        #returns the offset of point in tiles
         def offset(point):
-            """Return offset of point in tiles."""
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
             return index
     
-    
+        #tests if the tile is valid for pacman and ghosts to go on
         def valid(point):
-            """Return True if point is valid in tiles."""
             index = offset(point)
     
             if tiles[index] == 0:
@@ -97,12 +106,11 @@ if gamemode=='1':
     
             return point.x % 20 == 0 or point.y % 20 == 0
     
-    
+        #defines the world, makes a square background and the path writer over the 1s in tiles
         def world():
-            """Draw world using path."""
             bgcolor('midnightblue')
             path.color('black')
-    
+            
             for index in range(len(tiles)):
                 tile = tiles[index]
     
@@ -116,19 +124,20 @@ if gamemode=='1':
                         path.goto(x + 10, y + 10)
                         path.dot(4, 'salmon')
     
-    
+        #moves pacman and all of the ghosts/writers
         def move():
-            """Move pacmasn and all ghosts."""
+            #writes score
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
             clear()
-    
+            #tests if direction pacman is aimed is valid
             if valid(pacman + aim):
                 pacman.move(aim)
     
             index = offset(pacman)
-    
+            
+            #defines when tiles=1, adds to score and redifines them so the pellet is gone
             if tiles[index] == 1:
                 tiles[index] = 2
                 state['score'] += 1
