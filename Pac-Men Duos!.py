@@ -1,3 +1,4 @@
+#Gabe King GK, Owen Wilson OW, Teo Stoilevski TS
 #import necessary libraries
 from random import choice
 from turtle import *
