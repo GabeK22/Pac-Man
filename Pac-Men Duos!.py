@@ -288,7 +288,7 @@ if gamemode=='1':
         
         
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -302,7 +302,7 @@ if gamemode=='1':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+            
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -310,7 +310,7 @@ if gamemode=='1':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+           
             index = offset(point)
     
             if tiles[index] == 0:
@@ -325,7 +325,7 @@ if gamemode=='1':
     
     
         def world():
-            """Draw world using path."""
+           
             bgcolor('black')
             path.color('gray50')
     
@@ -344,7 +344,7 @@ if gamemode=='1':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+            
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -421,12 +421,12 @@ if gamemode=='1':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -494,7 +494,7 @@ if gamemode=='1':
         
         
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -508,7 +508,7 @@ if gamemode=='1':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+            
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -516,7 +516,7 @@ if gamemode=='1':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -531,7 +531,7 @@ if gamemode=='1':
     
     
         def world():
-            """Draw world using path."""
+            
             bgcolor('red4')
             path.color('GhostWhite')
     
@@ -550,7 +550,7 @@ if gamemode=='1':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+            
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -627,12 +627,12 @@ if gamemode=='1':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -699,7 +699,7 @@ if gamemode=='1':
         
         
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -713,7 +713,7 @@ if gamemode=='1':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+            
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -721,7 +721,7 @@ if gamemode=='1':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -736,7 +736,7 @@ if gamemode=='1':
     
     
         def world():
-            """Draw world using path."""
+            
             bgcolor('sienna4')
             path.color('tan2')
     
@@ -755,7 +755,7 @@ if gamemode=='1':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+            
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -832,12 +832,12 @@ if gamemode=='1':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -908,7 +908,7 @@ elif gamemode=='2':
     
     
         def square(x, y):
-            """Draw square using path at (x, y)."""
+           
             path.up()
             path.goto(x, y)
             path.down()
@@ -922,7 +922,7 @@ elif gamemode=='2':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+            
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -930,7 +930,7 @@ elif gamemode=='2':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -945,7 +945,7 @@ elif gamemode=='2':
     
     
         def world():
-            """Draw world using path."""
+            
             bgcolor('midnightblue')
             path.color('black')
     
@@ -964,7 +964,7 @@ elif gamemode=='2':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+          
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -1038,12 +1038,12 @@ elif gamemode=='2':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -1109,7 +1109,7 @@ elif gamemode=='2':
     
     
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -1123,7 +1123,7 @@ elif gamemode=='2':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+           
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -1131,7 +1131,7 @@ elif gamemode=='2':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -1146,7 +1146,7 @@ elif gamemode=='2':
     
     
         def world():
-            """Draw world using path."""
+            
             bgcolor('black')
             path.color('gray50')
     
@@ -1165,7 +1165,7 @@ elif gamemode=='2':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+           
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -1239,12 +1239,12 @@ elif gamemode=='2':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -1306,7 +1306,7 @@ elif gamemode=='2':
             ]
         # fmt: on
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -1320,7 +1320,7 @@ elif gamemode=='2':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+            
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -1328,7 +1328,7 @@ elif gamemode=='2':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -1343,7 +1343,7 @@ elif gamemode=='2':
     
     
         def world():
-            """Draw world using path."""
+            
             bgcolor('red4')
             path.color('GhostWhite')
     
@@ -1362,7 +1362,7 @@ elif gamemode=='2':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+            
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -1436,12 +1436,12 @@ elif gamemode=='2':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
@@ -1505,7 +1505,7 @@ elif gamemode=='2':
     
     
         def square(x, y):
-            """Draw square using path at (x, y)."""
+            
             path.up()
             path.goto(x, y)
             path.down()
@@ -1519,7 +1519,7 @@ elif gamemode=='2':
     
     
         def offset(point):
-            """Return offset of point in tiles."""
+           
             x = (floor(point.x, 20) + 200) / 20
             y = (180 - floor(point.y, 20)) / 20
             index = int(x + y * 20)
@@ -1527,7 +1527,7 @@ elif gamemode=='2':
     
     
         def valid(point):
-            """Return True if point is valid in tiles."""
+            
             index = offset(point)
     
             if tiles[index] == 0:
@@ -1542,7 +1542,7 @@ elif gamemode=='2':
     
     
         def world():
-            """Draw world using path."""
+           
             bgcolor('sienna4')
             path.color('tan2')
     
@@ -1561,7 +1561,7 @@ elif gamemode=='2':
     
     
         def move():
-            """Move pacmasn and all ghosts."""
+            
             writer.undo()
             writer.write(state['score'],font =('Courier',20,'bold'))
     
@@ -1635,12 +1635,12 @@ elif gamemode=='2':
     
     
         def change(x, y):
-            """Change pacman aim if valid."""
+            
             if valid(pacman + vector(x, y)):
                 aim.x = x
                 aim.y = y
         def change1(x1, y1):
-            """Change pacman aim if valid."""
+            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
                 aim1.y = y1
