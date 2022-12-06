@@ -3,15 +3,15 @@
 from random import choice
 from turtle import *
 from freegames import floor, vector
-#take input for gamemode, map and pacman's colour
+#take input for gamemode, map and pacman's colour GK
 gamemode=str(input("Enter 1 for co-op or 2 for evil Pacman/versus:"))
 choosemap=str(input("Enter map choice (classic, space, bullseye, western):"))
 choosecolour=str(input("Enter a colour for Pacman (yellow, blue, orange, purple):"))
 paccolour=choosecolour.strip(' ')
-#tests for valid colour input
+#tests for valid colour input TS
 if paccolour != 'yellow' and paccolour != 'blue' and paccolour != 'orange' and paccolour != 'purple':
     print ('Not a valid colour')
-#list of colours and their turtle id's
+#list of colours and their turtle id's OW
 yellow='gold1'
 blue='steelblue2'
 orange='darkorange2'
@@ -21,15 +21,16 @@ green='seagreen1'
 violet='slateblue2'
 brown='tomato4'
 
-#case where gamemode is co-op
+#case where gamemode is co-op GK
 if gamemode=='1':
-    #input for the second pacmans colours
+    #input for the second pacmans colours TS
     choosecolour1=str(input("Enter a colour for second Pacman (pink,green,violet,brown):"))
     paccolour1=choosecolour1.strip(' ')
-    #tests if colour is valid
+    #tests if colour is valid TS
     if paccolour1 != 'pink' and paccolour1 != 'green' and paccolour1 != 'violet' and paccolour1 != 'brown':
         print ('Not a valid colour')
     #case where classic map is chosen
+    #map modified by GK
     if choosemap=='classic':
         #score
         state = {'score': 0}
@@ -49,7 +50,7 @@ if gamemode=='1':
         ghost3 = vector(100, 160), vector(0, -10)
         ghost4 = vector(100, -160), vector(-10, 0)
         
-        #defining the map: 1 is avalid path, 0 is an invalid path
+        #defining the map: 1 is a valid path, 0 is an invalid path
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -126,6 +127,7 @@ if gamemode=='1':
                         path.dot(4, 'salmon')
     
         #moves pacman and all of the ghosts/writers
+        #modified by OW
         def move():
             #writes score
             writer.undo()
@@ -158,6 +160,7 @@ if gamemode=='1':
             index = offset(pacman1)
     
             #defines when tiles=1, adds to score and redifines them so the pellet is gone
+            #added by GK
             if tiles[index] == 1: 
                 tiles[index] = 2
                 state['score'] += 1
@@ -202,6 +205,7 @@ if gamemode=='1':
                     print ('Your Score:'+points.strip('{\'score\':}'))
                     exit()
             #if all points are collected: prints the following
+            #added by TS
             if str(state).strip('{\'score\':}')=='160':
                 print()
                 print('Congratulations! You Won!')
@@ -217,6 +221,7 @@ if gamemode=='1':
                 aim.x = x
                 aim.y = y
         #Change w,a,s,d pacman aim if valid
+        #Done by GK
         def change1(x1, y1):            
             if valid(pacman1 + vector(x1, y1)):
                 aim1.x = x1
@@ -231,6 +236,7 @@ if gamemode=='1':
         writer.color('salmon')
         writer.write(state['score'])
         #Listens for key clicks and takes as input to move pacman
+        #modified by OW
         listen()
         onkey(lambda: change(5, 0), 'Right')
         onkey(lambda: change(-5, 0), 'Left')
@@ -245,6 +251,7 @@ if gamemode=='1':
         done()
     
     #Case where space map is chosen
+    #map designed and specifics modified by OW
     #Same conditions as previous map
     elif choosemap=='space':
         state = {'score': 0}
@@ -261,7 +268,6 @@ if gamemode=='1':
         ghost5 = vector(-80, 80), vector(0,5)
         ghost6 = vector (-20, 80), vector(0,5)
     
-        # fmt: off
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -284,7 +290,6 @@ if gamemode=='1':
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
         
         
         def square(x, y):
@@ -452,6 +457,7 @@ if gamemode=='1':
         done()
     
     #Case where bullseye map is chosen
+    #map designed and specifics modified by TS
     #Same conditions as previous map
     elif choosemap=='bullseye':
         state = {'score': 0}
@@ -467,7 +473,6 @@ if gamemode=='1':
         ghost4 = vector(-20, -20), vector(-5, 0)
         ghost5 = vector(100, -160), vector (-5, 0)
 
-        # fmt: off
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -490,7 +495,6 @@ if gamemode=='1':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             ]
-        # fmt: on
         
         
         def square(x, y):
@@ -658,6 +662,7 @@ if gamemode=='1':
         done()
     
     #Case where western map is chosen
+    #map designed and specifics modified by GK/TS
     #Same conditions as previous map    
     elif choosemap=='western':
         state = {'score': 0}
@@ -672,7 +677,6 @@ if gamemode=='1':
         ghost3 = vector(100, 160), vector(0, -10)
         ghost4 = vector(100, -140), vector(-10, 0)
     
-        # fmt: off
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,
@@ -695,7 +699,6 @@ if gamemode=='1':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
         
         
         def square(x, y):
@@ -862,13 +865,15 @@ if gamemode=='1':
         move()
         done()
     
-    #If invalid map is input, prints following statement  
+    #If invalid map is input, prints following statement TS
     else:
         print('Not valid map')
 
 #Case where gamemode 2 is chosen
+#gamemode case by GK
 #Same conditions as previous gamemode
 elif gamemode=='2':
+    #map modifications by GK
     if choosemap=='classic':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -881,7 +886,6 @@ elif gamemode=='2':
         ghost2 = vector(-180, -160), vector(0, 5)
         ghost3 = vector(100, 160), vector(0, -5)
     
-        # fmt: off
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -904,8 +908,7 @@ elif gamemode=='2':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
-    
+ 
     
         def square(x, y):
            
@@ -1068,6 +1071,7 @@ elif gamemode=='2':
         move()
         done()
     
+    #map design and modifications by OW
     elif choosemap=='space':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -1081,8 +1085,7 @@ elif gamemode=='2':
         ghost3 = vector(100, 160), vector(0, -5)
         ghost4 = vector(100, -160), vector(-5, 0)
         ghost5 = vector(-80, 80), vector(0,5)
-    
-        # fmt: off
+
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -1105,8 +1108,6 @@ elif gamemode=='2':
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
-    
     
         def square(x, y):
             
@@ -1269,6 +1270,7 @@ elif gamemode=='2':
         move()
         done()
     
+    #map designed and modifications by TS
     elif choosemap=='bullseye':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -1281,7 +1283,6 @@ elif gamemode=='2':
         ghost3 = vector(20, 80), vector(0, -5)
         ghost1 = vector(-20, -20), vector(-5, 0)
 
-        # fmt: off
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -1304,7 +1305,7 @@ elif gamemode=='2':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             ]
-        # fmt: on
+
         def square(x, y):
             
             path.up()
@@ -1466,6 +1467,7 @@ elif gamemode=='2':
         move()
         done()
         
+    #map designed and modifications by TS/GK
     elif choosemap=='western':
         state = {'score': 0}
         path = Turtle(visible=False)
@@ -1477,8 +1479,7 @@ elif gamemode=='2':
         ghost1 = vector(-180, 160), vector(5, 0)
         ghost2 = vector(-180, -160), vector(0, 5)
         ghost3 = vector(100, 160), vector(0, -5)
-    
-        # fmt: off
+  
         tiles = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
             0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,
@@ -1501,8 +1502,6 @@ elif gamemode=='2':
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]
-        # fmt: on
-    
     
         def square(x, y):
             
@@ -1665,9 +1664,11 @@ elif gamemode=='2':
         move()
         done()
         
+    #OW
     else:
         print('Not valid map')
 
 #If invalid gamemode is input, prints following string
+#TS
 else:
     print('Not valid input for gamemode')
